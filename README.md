@@ -1,7 +1,6 @@
-<h1 align="center">gParaKV</h1>
+<h1 align="center">gParaKV-GC</h1>
 <p align="center">
-  <b>GPGPU‑accelerated key–value store with bitmap‑aided compaction &amp; garbage collection.</b><br>
-  <i>Source code and artifact scripts for the SC ’25 paper.</i>
+  The garbage collection version, which includes a parallel GPGPU‑accelerated GC strategy.
 </p>
 
 
@@ -23,7 +22,7 @@ This repository contains:
 
 There are two versions of the **gParaKV**:
 
-- **gParaKV (no GC)**: A version of the key–value store **without garbage collection**. See [gParaKV-GC](https://github.com/AHUKV/gParaKV)
+- **gParaKV (no GC)**: A version of the key–value store **without garbage collection**. See [gParaKV-GC](https://github.com/AHUKV/gParaKV).
 - **gParaKV-GC (with GC)**: The **garbage collection** version, which includes a parallel GPGPU‑accelerated GC strategy, reducing overhead and improving space amplification.
 
 
