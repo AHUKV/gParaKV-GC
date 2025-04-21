@@ -3,14 +3,6 @@
   The garbage collection version, which includes a parallel GPGPU‑accelerated GC strategy.
 </p>
 
-
-<p align="center">
-  <!-- Replace AFTER publishing -->
-  <a href="https://doi.org/10.5281/zenodo.FIXME"><img alt="DOI" src="https://img.shields.io/badge/doi-10.5281/zenodo.FIXME-blue.svg"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/AHUKV/gParaKV.svg"></a>
-</p>
-
-
 ---
 
 ## 1 Overview
