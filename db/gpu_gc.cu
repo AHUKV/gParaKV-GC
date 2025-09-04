@@ -35,6 +35,7 @@ __device__ bool CompareKey(const GPUKeyValue& key_value1,
 __global__ void MarkInvalidKeysKernel(GPUKeyValue* key_values_d,
                                       uint8_t* gpu_flags,
                                       uint32_t max_num_log_item,
+                                      uint32_t max_num_log,
                                       uint32_t var_key_value_size,
                                       uint32_t* invalid_count, size_t n) {
   uint32_t tid = threadIdx.x + blockIdx.x * blockDim.x;
@@ -44,7 +45,7 @@ __global__ void MarkInvalidKeysKernel(GPUKeyValue* key_values_d,
       uint32_t invalid_pos = GPUDecodeFixed32(key_values_d[tid].value + 4);
       uint32_t idx = (vlog_num - 1) * max_num_log_item +
                      (invalid_pos - 12) / var_key_value_size;
-      gpu_flags[idx] = 0;  // 索引从0开始
+      if (idx < max_num_log_item * max_num_log) gpu_flags[idx] = 0;  // 索引从0开始
       // 该vlog的无效KV对数量+1，必须原子操作
       atomicAdd(&invalid_count[vlog_num - 1], 1);
     }
@@ -57,7 +58,7 @@ void GPUGC::Mark(GPUKeyValue* key_values_d, size_t n) {
   size_t blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;
 
   MarkInvalidKeysKernel<<<blocksPerGrid, threadsPerBlock, 0, stream>>>(
-      key_values_d, gpu_flags, max_num_log_item,
+      key_values_d, gpu_flags, max_num_log_item, max_num_log,
       leveldb::my_stats.var_key_value_size + 12, invalid_count, n);
   CHECK(cudaStreamSynchronize(stream));
 }
