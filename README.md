@@ -14,7 +14,7 @@ This repository contains:
 
 There are two versions of the **gParaKV**:
 
-- **gParaKV (no GC)**: A version of the key–value store **without garbage collection**. See [gParaKV-GC](https://github.com/AHUKV/gParaKV).
+- **gParaKV (no GC)**: A version of the key–value store **without garbage collection**. See [gParaKV](https://github.com/AHUKV/gParaKV).
 - **gParaKV-GC (with GC)**: The **garbage collection** version, which includes a parallel GPGPU‑accelerated GC strategy, reducing overhead and improving space amplification.
 
 
