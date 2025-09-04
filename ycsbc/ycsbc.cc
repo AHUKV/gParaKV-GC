@@ -243,13 +243,13 @@ std::string ParseCommandLine(int argc, const char *argv[],
 void UsageMessage() {
   std::cout << "example: \n"
                "-filename\n"
-               "/media/d306/8bb53358-409c-470b-8697-1ea61b3e8f2a\n"
+               "/tmp/test\n"
                "-db\n"
-               "rocksdb\n"
+               "leveldb\n"
                "-configpath\n"
                "0\n"
                "-P\n"
-               "/home/d306/My/GPURocksDB-V3/workloads/100/workloadc.spec"
+               "workloads/100/workloadc.spec"
             << std::endl;
 }
 
@@ -276,7 +276,7 @@ int main(const int argc, const char *argv[]) {
                                          encoded_original_value_size;
 
   size_t num = std::stoul(props.GetProperty("recordcount"));
-  uint32_t vlog_size_tmp = 32 << 20;
+  uint32_t vlog_size_tmp = 64 << 20;
   uint32_t log_item_size = 12 + leveldb::my_stats.var_key_value_size;  // 1056
   uint32_t max_num_log_item =
       ((vlog_size_tmp / log_item_size + 100) / 100) * 100;

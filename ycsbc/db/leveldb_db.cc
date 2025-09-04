@@ -50,9 +50,9 @@ int LevelDB::Insert(const string& table, const string& key,
     s = db_->Put(leveldb::WriteOptions(), key, p.second);
     count++;
     if (!s.ok()) {
-//      fprintf(stderr, "insert error!\n");
-//      cout << s.ToString() << endl;
-//      exit(0);
+      fprintf(stderr, "insert error!\n");
+      cout << s.ToString() << endl;
+      exit(0);
     }
   }
 
