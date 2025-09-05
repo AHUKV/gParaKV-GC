@@ -47,7 +47,8 @@ __global__ void MarkInvalidKeysKernel(GPUKeyValue* key_values_d,
                      (invalid_pos - 12) / var_key_value_size;
       if (idx < max_num_log_item * max_num_log) gpu_flags[idx] = 0;  // 索引从0开始
       // 该vlog的无效KV对数量+1，必须原子操作
-      atomicAdd(&invalid_count[vlog_num - 1], 1);
+      if (vlog_num <= max_num_log)
+        atomicAdd(&invalid_count[vlog_num - 1], 1);
     }
   }
 }
