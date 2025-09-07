@@ -47,9 +47,9 @@ OUT_FILE=${OUT_FILE:-a.txt}
 # Binary selection
 ##########################
 if [[ "$ENABLE_GC" -eq 1 ]]; then
-  YCSB_BIN="/home/ubuntu/My/ParaKV-GC/cmake-build-debug/bin/ycsbc"
+  YCSB_BIN="$HOME/ParaKV-GC/build/bin/ycsbc"
 else
-  YCSB_BIN="/home/ubuntu/My/ParaKV/cmake-build-debug/bin/ycsbc"
+  YCSB_BIN="$HOME/ParaKV/build/bin/ycsbc"
 fi
 
 ##########################
