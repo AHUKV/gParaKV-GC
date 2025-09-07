@@ -2,6 +2,7 @@
 # Continuously logs DRAM usage, per-process CPU utilisation,
 # and package-level power (Intel RAPL) to cpu.log every second.
 
+# Two CPU cores
 CPU0_ENERGY=$(cat /sys/class/powercap/intel-rapl:0/energy_uj)
 CPU1_ENERGY=$(cat /sys/class/powercap/intel-rapl:1/energy_uj)
 LAST_ENERGY_VALUE=$((CPU0_ENERGY + CPU1_ENERGY))
